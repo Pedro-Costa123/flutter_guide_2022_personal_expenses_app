@@ -11,7 +11,7 @@ class Chart extends StatelessWidget {
 
   List<Map<String, Object>> get groupedTransactionValues {
     return List.generate(7, (index) {
-      final weekDay = DateTime.now().add(Duration(days: index)); //sub to add
+      final weekDay = DateTime.now().subtract(Duration(days: index)); //sub to add
       var totalSum = 0.0;
 
       for (var i = 0; i < recentTransactions.length; i++) {
@@ -23,7 +23,7 @@ class Chart extends StatelessWidget {
       }
 
       return {'day': DateFormat.E().format(weekDay), 'amount': totalSum};
-    });
+    }).reversed.toList();
   }
 
   double get totalSpending {
