@@ -16,11 +16,15 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.purple,
           accentColor: Colors.amber,
           fontFamily: 'Quicksand',
-          textTheme: ThemeData.light().textTheme.copyWith(
+          textTheme: ThemeData
+              .light()
+              .textTheme
+              .copyWith(
               headline6: TextStyle(
                   fontFamily: 'OpenSans',
                   fontWeight: FontWeight.bold,
-                  fontSize: 18)),
+                  fontSize: 18),
+              button: TextStyle(color: Colors.white)),
           appBarTheme: AppBarTheme(
               titleTextStyle: TextStyle(
                   fontFamily: 'OpenSans',
@@ -38,10 +42,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'Groceries', amount: 20.15, date: DateTime.now()),
+    // Transaction(
+    //     id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    // Transaction(
+    //     id: 't2', title: 'Groceries', amount: 20.15, date: DateTime.now()),
   ];
 
   List<Transaction> get _recentTransactions {
@@ -50,11 +54,11 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(String txTitle, double txAmount, DateTime chosenDate) {
     final newTx = Transaction(
         title: txTitle,
         amount: txAmount,
-        date: DateTime.now(),
+        date: chosenDate,
         id: DateTime.now().toString());
     setState(() {
       _userTransactions.add(newTx);
